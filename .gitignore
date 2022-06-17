@@ -5,3 +5,6 @@
 /Task.Learning/.vs
 /Task.Learning/bin/Debug/net6.0
 /Task.Learning/obj
+/Task.Learning/packages
+/Tpl.Learning.UnitTests/bin/Debug
+/Tpl.Learning.UnitTests/obj/Debug
