@@ -181,5 +181,12 @@ namespace Tpl.Learning.UnitTests
             m_OutputHelper.WriteLine("MD5: " + sw.Elapsed.ToString());
         }
 
+        [Fact]
+        public async void ShowWhatCompilerGeneratedCode()
+        {
+            SampleAsyncClass sampleAsyncClass = new SampleAsyncClass();
+            await sampleAsyncClass.DoJobsAsync();
+        }
+
     }
 }

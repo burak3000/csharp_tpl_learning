@@ -71,6 +71,8 @@
     <Compile Include="04_Tasks.cs" />
     <Compile Include="05_ConcurrentCollections.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleAsyncClass.cs" />
+    <Compile Include="SampleSynchronizedClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
