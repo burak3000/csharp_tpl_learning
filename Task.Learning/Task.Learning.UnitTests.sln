@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task.Learning.UnitTests", "Task.Learning.UnitTests.csproj", "{2EDF781E-1F46-4E2D-94F8-ABFA4169F80A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tpl.Learning.UnitTests", "..\Tpl.Learning.UnitTests\Tpl.Learning.UnitTests.csproj", "{D04D1457-AB11-4A25-B977-C6C0038878A8}"
 EndProject
 Global
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2EDF781E-1F46-4E2D-94F8-ABFA4169F80A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2EDF781E-1F46-4E2D-94F8-ABFA4169F80A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2EDF781E-1F46-4E2D-94F8-ABFA4169F80A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2EDF781E-1F46-4E2D-94F8-ABFA4169F80A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D04D1457-AB11-4A25-B977-C6C0038878A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D04D1457-AB11-4A25-B977-C6C0038878A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D04D1457-AB11-4A25-B977-C6C0038878A8}.Release|Any CPU.ActiveCfg = Release|Any CPU

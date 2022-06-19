@@ -69,6 +69,7 @@
     <Compile Include="02_Async.cs" />
     <Compile Include="03_HandlingExceptions.cs" />
     <Compile Include="04_Tasks.cs" />
+    <Compile Include="05_ConcurrentCollections.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -34,17 +34,13 @@ namespace Tpl.Learning.UnitTests
             m_OutputHelper.WriteLine($"MD5 Task Status: {aesTask.Status.ToString()}");
 
             int firstFinishedTaskIndex = Task.WaitAny(aesTask, md5Task);
-            m_OutputHelper.WriteLine(firstFinishedTaskIndex.ToString());
+            m_OutputHelper.WriteLine("First finished task index is: " + firstFinishedTaskIndex.ToString());
             m_OutputHelper.WriteLine($"AES Task Status: {aesTask.Status.ToString()}");
-            m_OutputHelper.WriteLine($"MD5 Task Status: {aesTask.Status.ToString()}");
-            m_OutputHelper.WriteLine($"Waiting for 3 secs...");
-            m_OutputHelper.WriteLine($"AES Task Status: {aesTask.Status.ToString()}");
-            m_OutputHelper.WriteLine($"MD5 Task Status: {aesTask.Status.ToString()}");
-
+            m_OutputHelper.WriteLine($"MD5 Task Status: {md5Task.Status.ToString()}");
 
             Task.WaitAll(aesTask, md5Task);
             m_OutputHelper.WriteLine($"AES Task Status: {aesTask.Status.ToString()}");
-            m_OutputHelper.WriteLine($"MD5 Task Status: {aesTask.Status.ToString()}");
+            m_OutputHelper.WriteLine($"MD5 Task Status: {md5Task.Status.ToString()}");
         }
 
         private string ConvertToHexString(byte[] byteArray)
