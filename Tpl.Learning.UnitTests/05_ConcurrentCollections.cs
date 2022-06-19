@@ -79,11 +79,11 @@ namespace Tpl.Learning.UnitTests
             CancellationTokenSource cts = new CancellationTokenSource();
             CancellationToken ct = cts.Token;
 
-            //Task.Factory.StartNew(() =>
-            //{
-            //    Thread.Sleep(500000);
-            //    cts.Cancel();
-            //});
+            Task.Factory.StartNew(() =>
+            {
+                Thread.Sleep(10000);
+                cts.Cancel();
+            });
             Parallel.Invoke(
                 () => ProduceSentences(ct),
                 () => ConsumeSentences());
@@ -103,6 +103,9 @@ namespace Tpl.Learning.UnitTests
                  "Simple sentence 4",
                  "Simple sentence 5",
                  "Simple sentence 6",
+                 "Simple sentence 7",
+                 "Simple sentence 8",
+                 "Simple sentence 9",
             };
 
             int sleepTime = 10;
@@ -115,6 +118,7 @@ namespace Tpl.Learning.UnitTests
 
                 try
                 {
+                    //Adding new element to the colllection with cancellation token and timeout 
                     bool isAdded = _sentencesBC.TryAdd(newSentence, 2000, ct);
                     if (isAdded)
                     {
@@ -128,13 +132,13 @@ namespace Tpl.Learning.UnitTests
                 catch (OperationCanceledException ex)
                 {
                     // The operation was cancelled
+                    m_OutputHelper.WriteLine("Operation is cancelled by the user.");
                     break;
                     // The next statement after the loop will let
                     // the consumer know the producer’s work is done
                 }
                 catch (TimeoutException ex)
                 {
-                    m_OutputHelper.WriteLine(ex.ToString());
                     break;
                 }
                 sleepTime += 5;
