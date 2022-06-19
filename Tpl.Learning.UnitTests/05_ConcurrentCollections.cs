@@ -19,15 +19,16 @@ namespace Tpl.Learning.UnitTests
         {
             m_OutputHelper = output;
         }
+
+        #region Concurrent Queue
         private const int NUM_AES_KEYS = 8000000;
-        private const int NUM_MD5_HASHES = 100000;
         /*ConcurrentQueue is completely lock free. But when Compare-And-Swap(CAS) operations fail and faced with contention, 
          * they may end up spinning and retrying. Contention is the condition that arises when many tasks or threads attemt
          * to use a single resource at the same time.*/
         ConcurrentQueue<string> _keysQueue = new ConcurrentQueue<string>();
 
         [Fact]
-        public async void AddValuesToQueue()
+        public async void ConcurrentQueueExample()
         {
             await Task.Run(() => ParallelPartitionGenerateAESKeys());
             Assert.Equal(NUM_AES_KEYS, _keysQueue.Count);
@@ -62,19 +63,11 @@ namespace Tpl.Learning.UnitTests
 
             return sb.ToString();
         }
+        #endregion
 
-
-
-
-
-
-
-
-
-
-
+        #region Blocking Collection
         [Fact]
-        public void ProduceConsumeSentences()
+        public void BlockingCollectionExample()
         {
             CancellationTokenSource cts = new CancellationTokenSource();
             CancellationToken ct = cts.Token;
@@ -165,5 +158,35 @@ namespace Tpl.Learning.UnitTests
 
             }
         }
+        #endregion
+
+        #region Concurrent Dictionary
+        private const int dictEntryCount = 10000;
+        [Fact]
+        public void ConcurrentDictionaryExample()
+        {
+            ConcurrentDictionary<int, string> dictionary = new ConcurrentDictionary<int, string>();
+            for (int i = 0; i < dictEntryCount; i++)
+            {
+                int key = i % 1000;
+                string value = key.ToString();
+                dictionary.AddOrUpdate(key, value, (existingKey, existingValue) =>
+                 {
+                     lock (existingValue)
+                     {
+                         existingValue += value;
+                     }
+                     return existingValue;
+                 });
+            }
+
+            m_OutputHelper.WriteLine("Dict key values");
+            foreach (var item in dictionary)
+            {
+                m_OutputHelper.WriteLine($"Key: {item.Key}, Value: {item.Value}");
+            }
+        }
+        #endregion
+
     }
 }
